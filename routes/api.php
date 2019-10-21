@@ -17,3 +17,11 @@ use Illuminate\Http\Request;
 Route::resource('/products', 'ProductController')->only([
     'index'
 ]);
+
+Route::resource('/orders/create', 'OrderController')->only([
+    'store'
+]);
+
+Route::resource('/orders/pay', 'OrderController')->only([
+    'update'
+]);
