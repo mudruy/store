@@ -25,5 +25,11 @@ class Order extends Model {
             'status' => self::STATUS_NEW
         ]);
     }
+    
+    
+    public function payOrder(){
+        $this->status = self::STATUS_PAID;
+        $this->save();
+    }
 
 }

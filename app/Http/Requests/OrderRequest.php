@@ -36,7 +36,12 @@ class OrderRequest extends FormRequest {
                 return $rules;
             case 'PUT':
                 return [
-                    'id' => 'required|integer|exists:orders,id', 
+                    'order_id' => 'required|integer|exists:orders,id',
+                    'sum' => [
+                        'required',
+                        "OrderSum:{$this->get('order_id')}",
+                        "OrderNew:{$this->get('order_id')}",
+                    ],
                 ];
         }
     }
