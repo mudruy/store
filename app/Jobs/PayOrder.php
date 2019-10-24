@@ -49,6 +49,11 @@ class PayOrder implements ShouldQueue {
         DB::commit();
     }
 
+    /**
+     * make http ping
+     * @param string $url
+     * @return boolean
+     */
     protected static function _goUrl($url) {
         $config = ['timeout' => 5];
         $guzzle = new GuzzleClient($config);

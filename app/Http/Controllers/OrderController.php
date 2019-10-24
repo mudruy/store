@@ -9,11 +9,21 @@ use App\Jobs\PayOrder;
 
 class OrderController extends Controller {
 
-    public function store(OrderRequest $request) {
+    /**
+     * Json REST store for Order
+     * @param OrderRequest $request
+     * @return array
+     */
+    public function store(OrderRequest $request) :array {
         $order = Order::createOrder($request->validated());
         return ['order_id' => $order->id];
     }
 
+    /**
+     * Json REST update for Order
+     * @param OrderRequest $request
+     * @param int $id
+     */
     public function update(OrderRequest $request, $id) {
         //$order_id, $sum
         extract($request->validated());

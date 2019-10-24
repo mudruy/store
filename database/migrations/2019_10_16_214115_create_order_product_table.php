@@ -17,7 +17,6 @@ class CreateOrderProductTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->primary(['order_id', 'product_id']);
-            $table->timestamps();
         });
     }
 
