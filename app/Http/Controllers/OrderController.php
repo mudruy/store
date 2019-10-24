@@ -30,6 +30,7 @@ class OrderController extends Controller {
         
         $order = Order::find($order_id);
         $this->dispatch(new PayOrder($order));
+        //TODO return complete response according to API spec
     }
 
 }
