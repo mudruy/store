@@ -1,0 +1,18 @@
+ТЗ для разработчика:
+Необходимо написать упрощённое REST API.
+
+1) Сгенерировать стартовый набор данных, генерируется 20 сущностей "товар", у которых есть идентификатор, название и цена.
+2) Метод получения всех существующих товаров.
+3) Создать заказ. Метод принимает набор идентификаторов существующих товаров. У заказа есть статус, который может быть в 2 состояниях: новый, оплачено. При создании заказа, по умолчанию выставляется статус "новый". При успешном создании заказа, метод должен возвращать этот номер в ответе на запрос.
+4) Оплатить заказ. Метод принимает на вход сумму и идентификатор заказа. Если сумма совпадает с суммой заказа и статус заказа "новый", то отправляем http запрос на сайт ya.ru, если статус запроса 200, то меняем статус заказа на "оплачено".
+
+
+Check steps 
+1. composer global require laravel/installer
+2. composer update 
+3. php artisan key:generate
+4. edit .env and start php artisan migrate
+5. gen products php artisan generate:product 20
+6. emulate create order curl -d "product[]=1&product[]=20" "http://localhost:8000/api/orders/create"
+7. emulate pay order curl -X PUT -H "Content-Type: application/json" -d '{"order_id":"1","sum":"order_sum"}'  "http://localhost:8000/api/orders/pay/1" where order_sum is sum off order
+8. view api routes php artisan route:list
